@@ -1,0 +1,52 @@
+<!-- The login page of the application -->
+<!-- 0702280 Annemari Mustonen -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/databaseHandler.js"></script>
+    <script type="text/javascript" src="scripts/userHandler.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+    <title>DogData</title>
+</head>
+<body class="padding blue-50">
+    <div data-role="page" id="addpage">
+        <div data-role="panel" id="addPagePanel">
+        </div>
+        <div data-role="header" data-position="fixed" class="blue-50">
+            <h1>DogData Login</h1>
+        </div>
+
+        <!-- Input fields and the sign in button -->
+        <div data-role="main" class="ui-content">
+            <form style="background-image: url('/img/Annemari_Mustonen1')">
+                <div class="ui-field-contain">
+                    <label for="txtUser">Email:</label>
+                    <input type="text" id="txtUser" data-clear-btn="true" />
+                    <label for="txtPassword">Password</label>
+                    <input type="password" id="txtPassword" data-clear-btn="true" />
+                    <label for="btnAdd">
+                    </label>
+                    <a class="ui-btn" id="btnAdd" onclick="addUser()">Sign in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

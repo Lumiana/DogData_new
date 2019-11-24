@@ -1,0 +1,78 @@
+﻿<!-- 0702280 Annemari Mustonen -->
+<!-- This page contains the input fields to add information about the dog -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+    <link rel="stylesheet" type="text/css" href="css/dog.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/databaseHandler.js"></script>
+    <script type="text/javascript" src="scripts/userHandler.js"></script>
+    <script type="text/javascript" src="scripts/infoHandler.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+    <!-- Here we first check if user has clicked an existing dog in the homepage. If they have, that dogs information will be loaded into the input fields, else blank fields will be shown. -->
+    <script>
+        //Here we open the database connetion
+        $(document).on("ready", function () {
+            databaseHandler.db = window.openDatabase("users.db", "1.0", "users database", 1000000);
+
+            if (parent.dogName) {
+
+                databaseHandler.db.transaction(function (tx) {
+                    tx.executeSql('SELECT * FROM info WHERE name = ?',
+                        [parent.dogName],
+                        function (tx, results) {
+                            $("#txtName").val(results.rows[0].name);
+                            $("#txtBreed").val(results.rows[0].breed);
+                            $("#txtBreeder").val(results.rows[0].breeder);
+                        },
+                        function (tx, error) {
+
+                        }
+                    );
+                });
+            }
+            else {
+                $("#txtName").val("");
+                $("#txtBreed").val("");
+                $("#txtBreeder").val("");
+            }
+        });
+    </script>
+
+</head>
+
+<!-- The input fields -->
+<body>
+    <div class="space"></div>
+    <div class="space"></div>
+    <h2 class="text-strong padding text-black">Name of the dog</h2>
+    <input id="txtName" type="text" style="border:none; background-color: white; outline: 0;">
+
+    <h2 class="text-strong padding text-black">Breed</h2>
+    <input id="txtBreed" type="text" style="border:none; background-color: white; outline: 0;">
+
+    <h2 class="text-strong padding text-black">Breeder</h2>
+    <input id="txtBreeder" type="text" style="border:none; background-color: white; outline: 0;">
+
+
+    <!-- Add info and close page button -->
+    <a class="ui-btn" id="btnAddInfo" onclick="addInfo()">Add info</a>
+    <a class="ui-btn" id="btnCloseInfo" onclick="closeInfo()">Close</a>
+
+</body>
+</html>

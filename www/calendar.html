@@ -1,0 +1,77 @@
+﻿<!-- 0702280 Annemari Mustonen -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/calendar.css">
+    <script type="text/javascript" src="scripts/databaseHandler.js"></script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- This script opens the database connection and gets the calendar header month and year -->
+    <script>
+        $(document).on("ready", function () {
+            databaseHandler.db = window.openDatabase("users.db", "1.0", "users database", 1000000);
+            selectYear = $("year");
+            selectMonth = $("month");
+            monthAndYear = document.getElementById("monthAndYear");
+            showCalendar(currentMonth, currentYear);
+        });
+
+    </script>
+
+</head>
+<body>
+    <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+        <div class="card">
+            <div>
+                <h3 class="card-header" id="monthAndYear"></h3>
+            </div>
+            <!-- Table component -->
+            <table class="table table-bordered table-responsive-sm" id="calendar">
+                <thead>
+                    <!-- Day headers -->
+                    <tr>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+
+                <tbody id="calendar-body"></tbody>
+            </table>
+
+            <div style="display: flex">
+
+                <!-- Buttons -->
+                <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
+                <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

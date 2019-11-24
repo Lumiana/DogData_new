@@ -1,0 +1,58 @@
+﻿<!-- 0702280 Annemari Mustonen -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- <script type="text/javascript" src="js/index.js"></script>  -->
+
+    <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+    <link rel="stylesheet" type="text/css" href="css/dog.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/databaseHandler.js"></script>
+    <script type="text/javascript" src="scripts/userHandler.js"></script>
+    <script type="text/javascript" src="scripts/infoHandler.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+    <!-- Function to make sure the dog name has been cleared from the input fields and load the info  -->
+    <script>
+        $(document).on("ready", function () {
+            databaseHandler.db = window.openDatabase("users.db", "1.0", "users database", 1000000);
+            parent.dogName = null;
+            infoHandler.loadLatestInfo();
+            infoHandler.loadName();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="space"></div>
+    <div class="space"></div>
+
+    <div style="padding:5px"> This app allows users to add information about their dogs.</div>
+
+    <!-- Place to show latest dogs added information -->
+    <div class="space"></div>
+    <h2 style="text-align:center" class="text-strong">Latest dog added</h2>
+    <div class="space"></div>
+    <div style="margin:auto; text-align:center; background-color:gold; padding:5px; width:75%" id="showAllInfo">---</div>
+    <div class="space"></div>
+
+    <!-- Place to show the names of all dogs added -->
+    <h2 style="text-align:center" class="text-strong">All dogs (click on the names to access their information)</h2>
+    <div class="space"></div>
+    <table class="pink" id="dogNames"> </table>
+
+</body>
+</html>

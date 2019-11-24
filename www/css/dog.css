@@ -1,0 +1,60 @@
+﻿/* Our custom css page to change the look of the application */
+/* 0702280 Annemari Mustonen */
+
+/* frame style */
+iframe {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.footer {
+    border-top: 1px solid darkgrey;
+    background-color: #F1F1F1;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 12px;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 60px;
+}
+
+/* style for the footer buttons */
+.footer-button {
+    background-color: blue;
+    font-weight: lighter;
+    padding: 5px;
+    height: auto;
+    overflow: visible;
+    padding: 5px 18px 5px 18px;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    empty-cells: show;
+    margin:auto;
+    width: 50%;
+    font-size: 20px;
+}
+
+td {
+    border: 1px solid red;
+    padding: 5px;
+}
+
+thead {
+    padding: 0px;
+    border: none;
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
